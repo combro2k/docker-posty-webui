@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+test -z "${POSTY_API_URL}" && echo "Can not run without POSTY_API_URL!" && exit 1
+test -z "${POSTY_API_KEY}" && echo "Can not run without POSTY_API_KEY!" && exit 1
+
+cat <<EOF > /data/web/dist/settings.json
+{
+    "servers": [
+        {
+            "caption": "Server",
+            "url": "${POSTY_API_URL}",
+            "key": "${POSTY_API_KEY}"
+        }
+    ]
+}
+EOF
+
+exec /usr/sbin/nginx

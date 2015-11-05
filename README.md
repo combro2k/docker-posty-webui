@@ -1,2 +1,2 @@
 # docker-posty
-Posty container in Docker
+Posty-webui container in Docker
